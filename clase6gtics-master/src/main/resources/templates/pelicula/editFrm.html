@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Peliculas')}"></head>
+    <body>
+        <div class="container">
+            <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Peliculas')}"></nav>
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <h2>Editar Pelicula</h2>
+                    <hr/>
+                    <form th:action="@{'/pelicula/save'}" method="post" th:object="${pelicula}">
+                        <input th:field="*{peliculaid}" type="hidden"/>
+                        <div class="mb-3">
+                            <label class="form-label">Titulo</label>
+                            <input type="text" class="form-control" th:field="*{titulo}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha de estreno</label>
+                            <input type="text" class="form-control" th:field="*{fechaEstreno}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Duracion</label>
+                            <input type="text" class="form-control" th:field="*{duracionMinutos}"/>
+                        </div>
+
+                        <a th:href="@{'/pelicula'}" class="btn btn-danger">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+    </body>
+</html>

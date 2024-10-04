@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Directores')}"></head>
+    <body>
+        <div class="container">
+            <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Directores')}"></nav>
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <h2>Editar Director</h2>
+                    <hr/>
+                    <form th:action="@{'/director/save'}" method="post" th:object="${Director}">
+                        <input th:field="*{directorId}" type="hidden"/>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" th:field="*{nombre}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">teléfono</label>
+                            <input type="text" class="form-control" th:field="*{telefono}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" th:field="*{nacionalidad}"/>
+                        </div>
+
+                        <a th:href="@{'/director'}" class="btn btn-danger">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+    </body>
+</html>
